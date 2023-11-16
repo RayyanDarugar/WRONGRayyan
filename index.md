@@ -1,9 +1,12 @@
 ---
 layout: home
-search_exclude: true
+search_exclude:
 ---
-A modified blog for CSA Based on Fastpages- Tirth Thakkar & Haseeb Beg   
+
+<link rel="stylesheet" href="index.css">
+
+<h1>Project Wrong<h1>
 
 
 
-# Posts
+
