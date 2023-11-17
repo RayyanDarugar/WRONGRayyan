@@ -1,2 +1,6 @@
-h1 {text-align: center;}
-p {text-align: center;}
+h2 {text-align: center;}
+
+.centered-title {
+    text-align: center;
+  }
+  
