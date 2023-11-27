@@ -18,7 +18,7 @@ search_exclude:
 </div>
 
 <!--Buttons-->
-<div>
-  <button href="https://google.com">Learn!</button>
+<div class="beside">
+  <button href="https://nathaniel633.github.io/WRONG/2023/11/15/Learning-Carousel_IPYNB_2_.html">Learn!</button>
   <button href="https://wikipedia.org">Test!</button>
 </div>
