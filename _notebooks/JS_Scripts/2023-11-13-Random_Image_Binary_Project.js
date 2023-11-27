@@ -75,26 +75,42 @@ var imageArray = [
 
 // Function to set put random images from image array into question
 function randomImage() {
-    // Set random image for question 1
-    var randomIndex = Math.floor(Math.random() * 10);
-    var randomImage = imageArray[randomIndex];
-    document.getElementById('imageq1').src = randomImage;
+    // Get all random image index and ensure no repeats
+    var randomIndex1 = Math.floor(Math.random() * 32);
+
+    var randomIndex2 = Math.floor(Math.random() * 32);
+    while (randomIndex2 == randomIndex1) {
+        var randomIndex2 = Math.floor(Math.random() * 32);
+    }
+
+    var randomIndex3 = Math.floor(Math.random() * 32);
+    while (randomIndex3 == randomIndex2 || randomIndex3 == randomIndex1) { // || is or
+        var randomIndex3 = Math.floor(Math.random() * 32);
+    }
+
+    var randomIndex4 = Math.floor(Math.random() * 32);
+    while (randomIndex4 == randomIndex3 || randomIndex4 == randomIndex2 || randomIndex4 == randomIndex1) {
+        var randomIndex4 = Math.floor(Math.random() * 32);
+    }
+
+    // Set image for question 1 using randomIndex1
+    var randomImage1 = imageArray[randomIndex1];
+    document.getElementById('imageq1').src = randomImage1;
+
+    // Set image for question 2 using randomIndex2
+    var randomImage2 = imageArray[randomIndex2];
+    document.getElementById('imageq2').src = randomImage2;
+
+    // Set image for question 3 using randomIndex3
+    var randomImage3 = imageArray[randomIndex3];
+    document.getElementById('imageq3').src = randomImage3;
+
+    // Set image for question 4 using randomIndex4
+    var randomImage4 = imageArray[randomIndex4];
+    document.getElementById('imageq4').src = randomImage4;
+
     // console.log(document.getElementById('imageq1'))
     // testing: console.log(document.getElementById('imageq1')) // outputs random image link and actually updates it
     // works now
 
-    // Set random image for question 2
-    var randomIndex = Math.floor(Math.random() * 10);
-    var randomImage = imageArray[randomIndex];
-    document.getElementById('imageq2').src = randomImage;
-
-    // Set random image for question 3
-    var randomIndex = Math.floor(Math.random() * 10);
-    var randomImage = imageArray[randomIndex];
-    document.getElementById('imageq3').src = randomImage;
-
-    // Set random image for question 4
-    var randomIndex = Math.floor(Math.random() * 10);
-    var randomImage = imageArray[randomIndex];
-    document.getElementById('imageq4').src = randomImage;
 } // note: redundant, so maybe try to find a way (maybe loop? and like concatenate strings with imageq + 1, 2, 3, 4) to make cleaner
