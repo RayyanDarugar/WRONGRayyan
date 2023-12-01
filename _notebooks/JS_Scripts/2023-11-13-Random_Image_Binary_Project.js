@@ -34,45 +34,6 @@ var imageArray = [
     "https://media.discordapp.net/attachments/944810556622245908/1178598072863965274/image.png?ex=6576b9fd&is=656444fd&hm=27fbc728e41dc8e2b7be62acfa7cef5bd426db51abf0bc3cfffee21e4d10805d&=&format=webp" // 31
 ];
 
-
-
-// below is testing
-// var imageArray = [ // should be working, just update links and maybe try testing path?
-//     'https://media.discordapp.net/attachments/851214581955297320/1174284467548995704/image.png?ex=656708a2&is=655493a2&hm=b33d947914ee42eb9ffaaa6ae5cd1a7d96a50f620a6077915a47eab937124e1f&=&width=802&height=597',
-//     'https://www.whitehouse.gov/wp-content/uploads/2021/01/17_andrew_johnson.jpg',
-//     'https://www.whitehouse.gov/wp-content/uploads/2021/01/17_andrew_johnson.jpg',
-//     'https://www.whitehouse.gov/wp-content/uploads/2021/01/17_andrew_johnson.jpg',
-//     'https://www.whitehouse.gov/wp-content/uploads/2021/01/17_andrew_johnson.jpg',
-//     'https://www.whitehouse.gov/wp-content/uploads/2021/01/17_andrew_johnson.jpg',
-//     'https://media.discordapp.net/attachments/851214581955297320/1174284467548995704/image.png?ex=656708a2&is=655493a2&hm=b33d947914ee42eb9ffaaa6ae5cd1a7d96a50f620a6077915a47eab937124e1f&=&width=802&height=597',
-//     'https://media.discordapp.net/attachments/851214581955297320/1174284467548995704/image.png?ex=656708a2&is=655493a2&hm=b33d947914ee42eb9ffaaa6ae5cd1a7d96a50f620a6077915a47eab937124e1f&=&width=802&height=597',
-//     'https://media.discordapp.net/attachments/851214581955297320/1174284467548995704/image.png?ex=656708a2&is=655493a2&hm=b33d947914ee42eb9ffaaa6ae5cd1a7d96a50f620a6077915a47eab937124e1f&=&width=802&height=597',
-//     'https://media.discordapp.net/attachments/851214581955297320/1174284467548995704/image.png?ex=656708a2&is=655493a2&hm=b33d947914ee42eb9ffaaa6ae5cd1a7d96a50f620a6077915a47eab937124e1f&=&width=802&height=597',
-//     'https://media.discordapp.net/attachments/851214581955297320/1174284467548995704/image.png?ex=656708a2&is=655493a2&hm=b33d947914ee42eb9ffaaa6ae5cd1a7d96a50f620a6077915a47eab937124e1f&=&width=802&height=597',
-//     'https://media.discordapp.net/attachments/851214581955297320/1174284467548995704/image.png?ex=656708a2&is=655493a2&hm=b33d947914ee42eb9ffaaa6ae5cd1a7d96a50f620a6077915a47eab937124e1f&=&width=802&height=597',
-//     'https://media.discordapp.net/attachments/851214581955297320/1174284467548995704/image.png?ex=656708a2&is=655493a2&hm=b33d947914ee42eb9ffaaa6ae5cd1a7d96a50f620a6077915a47eab937124e1f&=&width=802&height=597',
-//     'images/image13.JPG',
-//     'images/image14.JPG',
-//     'images/image15.JPG',
-//     'images/image16.JPG',
-//     'images/image17.JPG',
-//     'images/image18.JPG',
-//     'images/image19.JPG',
-//     'images/image20.JPG',
-//     'images/image21.JPG',
-//     'images/image22.JPG',
-//     'images/image23.JPG',
-//     'images/image24.JPG',
-//     'images/image25.JPG',
-//     'images/image26.JPG',
-//     'images/image27.JPG',
-//     'images/image28.JPG',
-//     'images/image29.JPG',
-//     'images/image30.JPG',
-//     'images/image31.JPG'
-// ];
-
-
 // Function to set put random images from image array into question
 function randomImage() {
     // Get all random image index and ensure no repeats
