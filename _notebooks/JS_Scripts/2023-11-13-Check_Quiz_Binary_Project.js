@@ -1,17 +1,24 @@
-// Declare answerKey globally (kinda sus?)
-// let answerKey; // this made it worse lowkey
+// // Declare answerKey globally (kinda sus?)
+// // let answerKey; // this made it worse lowkey
 
-// Checks if answerKey object exists. There is an error where if it is run the first time and defined and then rerun, it says error bc already declared.
-// This checks if object exists, and if it does it just passes and if it doesn't it defines it
-if (answerKey) {
-    // Object answerKey exists
-    delete answerKey;
-    defineanswerKeyObject()
-    // if the object exists, it's deleted and redefined with the two lines above. Just having it pass didn't work and had the declare error
-  } else {
-    // Object answerKey does not exist
-    defineanswerKeyObject()
-  }
+// // Checks if answerKey object exists. There is an error where if it is run the first time and defined and then rerun, it says error bc already declared.
+// // This checks if object exists, and if it does it just passes and if it doesn't it defines it
+// if (answerKey) {
+//     // Object answerKey exists
+//     delete answerKey;
+//     defineanswerKeyObject()
+//     // if the object exists, it's deleted and redefined with the two lines above. Just having it pass didn't work and had the declare error
+//   } else {
+//     // Object answerKey does not exist
+//     defineanswerKeyObject()
+//   }
+
+
+let answerKey = {};
+
+if (typeof answerKey === 'undefined') {
+    defineanswerKeyObject();
+}
 
 // Define answerKey object
 function defineanswerKeyObject() {
@@ -51,6 +58,44 @@ function defineanswerKeyObject() {
     }
 }
 
+// below is testing with new links using postimage, https://postimages.org/
+function defineanswerKeyObject() {
+    answerKey = {
+        "https://i.postimg.cc/15d5F4NG/csptest.jpg": 0,
+        "": 1,
+        "": 2,
+        "": 3,
+        "": 4,
+        "": 5,
+        "": 6,
+        "": 7,
+        "": 8,
+        "": 9,
+        "": 10,
+        "": 11,
+        "": 12,
+        "": 13,
+        "": 14,
+        "": 15,
+        "": 16,
+        "": 17,
+        "": 18,
+        "": 19,
+        "": 20,
+        "": 21,
+        "": 22,
+        "": 23,
+        "": 24,
+        "": 25,
+        "": 26,
+        "": 27,
+        "": 28,
+        "": 29,
+        "": 30,
+        "": 31
+    }
+}
+
 // Check quiz answers and output score
 function checkQuiz() {
     // Define counters
@@ -68,12 +113,12 @@ function checkQuiz() {
 
     // testing
     console.log(answerKey["https://media.discordapp.net/attachments/851214581955297320/1174284467548995704/image.png?ex=656708a2&is=655493a2&hm=b33d947914ee42eb9ffaaa6ae5cd1a7d96a50f620a6077915a47eab937124e1f&=&width=802&height=597"])
-    console.log(imageQuestionLinkWithQuotes) // this and above ok
+    console.log(imageQuestionLinkWithQuotes) // this ok, above undefined
     console.log(questionAnswer) // undefined
     console.log(answerKey[imageQuestionLinkWithQuotes]) // undefined
 
     // Add 1 to correctAnswers if answer matches, add 1 to wrongAnswers if answer doesn't match
-    if (q1Answer === questionAnswer) {
+    if (q1Answer == questionAnswer) {
         correctAnswers += 1;
     }
     else {
