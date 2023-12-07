@@ -13,8 +13,8 @@ search_exclude:
 
 <!--Image work-->
 <div class="learning">
-    <img src="images/WRONG_learn.png" width="793.5" height="1122.5" alt="Learning_tab">
-    <img src="images/WRONG_test.png" width="793.5" height="1122.5" alt="Testing tab">
+    <img src="https://i.postimg.cc/VvyJb6mF/WRONG-learn.png">
+    <img src="https://i.postimg.cc/0jpbGsN1/WRONG-test.png">
 </div>
 
 <!--Buttons-->

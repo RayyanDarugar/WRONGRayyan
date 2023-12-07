@@ -11,8 +11,7 @@ h2 {text-align: center;}
   justify-content: space-between;
 }
 
-button {
-  background-color: #007bff;
+.button {
   color: #fff;
   padding: 10px 20px;
   border: none;
