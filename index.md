@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: newHome
 search_exclude:
 ---
 
@@ -18,7 +18,21 @@ search_exclude:
 </div>
 
 <!--Buttons-->
-<div class="beside">
-  <button href="https://nathaniel633.github.io/WRONG/2023/11/15/Learning-Carousel_IPYNB_2_.html">Learn!</button>
-  <button href="https://wikipedia.org">Test!</button>
+<br>
+<div class="beside" class="button">
+  <a href="https://nathaniel633.github.io/WRONG/2023/11/13/Test_Binary_Project_IPYNB_2_.html" target="_blank">
+    <button>
+      Picture Test!
+    </button>
+  </a>
+  <a href="https://nathaniel633.github.io/WRONG/2023/11/15/Learning-Carousel_IPYNB_2_.html" target="_blank">
+    <button>
+      Learn!
+    </button>
+  </a>
+  <a href="https://nathaniel633.github.io/WRONG/2023/09/15/Quiz_IPYNB_2_.html" target="_blank">
+    <button>
+      Number Test!
+    </button>
+  </a>
 </div>
