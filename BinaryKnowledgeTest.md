@@ -8,6 +8,17 @@ type: hacks
 courses: { compsci: {week: 13} }
 ---
 
+<style>
+    button img {
+      width: 50px; /* Set the width as needed */
+      height: 30px; /* Set the height as needed */
+      padding: 0; /* Remove any default padding */
+      margin: 10; /* Remove any default xmargin */
+      border: none; /* Remove any default border */
+    }
+</style>
+
+
 <html>
     <body>
         <h1>Test yourself on what you just learned here!</h1>
@@ -43,7 +54,9 @@ courses: { compsci: {week: 13} }
             </div>
             <!-- Button to Submit and Refresh images -->
             <button type="button" onclick="randomImage()">Refresh Images</button>
-            <button type="button" onclick="checkQuiz()">Submit Answers</button>
+            <button type="button" onclick="checkQuiz()">
+                <img src="https://i.postimg.cc/GtWHjP58/submit-1.png" alt="Submit Answer">
+            </button>
         </form>
         <div id="result"></div>
 
