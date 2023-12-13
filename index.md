@@ -8,7 +8,7 @@ search_exclude:
 
 <!---Heading text-->
 <h1 class="centered-title">Project WRONG</h1>
-<h2>Jason Gao, Rayyan Darugar, Grayson Guyot, Nathan Obodovski</h2>
+<h2>Jason Gao, Rayyan Darugar, Grayson Guyot, Nathan Obodovski, Will Bartelt</h2>
 <br>
 
 <!--Image work-->
@@ -20,7 +20,7 @@ search_exclude:
 <!--Buttons-->
 <br>
 <div class="beside" class="button">
-  <a href="https://nathaniel633.github.io/WRONG/2023/11/13/Test_Binary_Project_IPYNB_2_.html" target="_blank">
+  <a href="https://nathaniel633.github.io/WRONG/BinaryKnowledgeTest.html" target="_blank">
     <button>
       Picture Test!
     </button>
