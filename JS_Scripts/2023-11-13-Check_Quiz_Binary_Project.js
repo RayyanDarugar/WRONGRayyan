@@ -136,6 +136,8 @@ function checkQuiz() {
     // test
     console.log(answerKey)
 
+    
+
     // Define counters
     var correctAnswers = 0;
     var wrongAnswers = 0;
