@@ -69,9 +69,4 @@ function randomImage() {
     // Set image for question 4 using randomIndex4
     var randomImage4 = imageArray[randomIndex4];
     document.getElementById('imageq4').src = randomImage4;
-
-    // console.log(document.getElementById('imageq1'))
-    // testing: console.log(document.getElementById('imageq1')) // outputs random image link and actually updates it
-    // works now
-
-} // note: redundant, so maybe try to find a way (maybe loop? and like concatenate strings with imageq + 1, 2, 3, 4) to make cleaner
+}
