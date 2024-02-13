@@ -41,7 +41,7 @@ permalink: /gamescreen
         <input type="number" min="1" max="9" class="white-input" placeholder="Type here..." id="playerinputmove">
         <button onclick="movement()">Move</button><br>
         <input type="number" min="1" max="9" class="white-input" placeholder="Type here..." id="playerinputattack">
-        <button onclick="action()">Attack</button>
+        <button onclick="attack()">Attack</button>
     </div>
 </body>
 
@@ -114,7 +114,18 @@ permalink: /gamescreen
         checkPosition(enemyposition, possibleActionPositions[position])
     }
 
-    // Define function for player attack
+   
+ // Define function for player attack
+    function attack() {
+        // Get the input value
+        const locationInput = document.getElementById("playerinputattack");
+        const location = parseInt(locationInput.value);
 
+        // Check if the player attacks where the enemy is present
+        if (location === enemyposition) {
+            console.log(`Player attacks location ${location} and hits! Dealing 50 damage.`);
+        } else {
+            console.log(`Player attacks location ${location} but there's no enemy. The attack misses.`);
+        }
+    }
 </script>
-</html>
