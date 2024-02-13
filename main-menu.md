@@ -1,7 +1,6 @@
 ---
 toc: true
 comments: true
-layout: post
 title: Main Menu
 type: hacks
 courses: { compsci: {week: 20} }
@@ -10,6 +9,8 @@ permalink: /main_menu/
 
 <html>
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6326342897382376"
+     crossorigin="anonymous"></script>
 <style>
     body {
         background-color: #7E7A7A;
@@ -44,21 +45,15 @@ permalink: /main_menu/
     }
 </style>
 </head>
-<body>
+<body style="background-color:gray;">
     <h1>
         TBFT&trade; - Turn Based Fantasy Tarkov
     </h1>
-    <div class="black-bar">&nbsp;&nbsp;&nbsp;&nbsp;</div>
     <h2>
-        Developed by Project WRONG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Developed by Project WRONG
     </h2>
     <img src="https://i.postimg.cc/wj2FYHpM/candle-removebg-preview.png">
-    <a href="http://127.0.0.1:4100/WRONG//2024/01/21/CharacterCreation_IPYNB_2_.html"><button class="startbutton" type="button">Start Game</button></a> -->
+    <a href="{{site.baseurl}}/CharacterCreation_IPYNB_2_.html"><button target="_blank" class="startbutton" type="button">Start Game</button></a>
      <script src="{{site_baseurl}}/_notebooks/JS_Scripts/2024-01-21-MainScreen.js"></script>
-   <a href="https://nathaniel633.github.io/WRONG/charactercreationone/" target="_blank" class="button">
-    <button>
-      TBFT Game
-    </button>
-  </a>
 </body>
 </html>
