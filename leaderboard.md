@@ -68,7 +68,7 @@ Permalink: /leaderboard/
             age.innerHTML = row.age; 
             Nick.innerHTML = row.Nick;
             role.innerHTMl = row.role;
-            wins.innerHTML = rown.wins;
+            wins.innerHTML = row.wins;
             // this builds td's into tr
             tr.appendChild(name);
             tr.appendChild(id);
