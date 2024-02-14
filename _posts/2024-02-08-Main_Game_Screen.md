@@ -29,7 +29,6 @@ permalink: /gamescreen
             box-sizing: border-box; /* Include padding and border in the width calculation */
         }
     </style>
-    <!-- <script src="{{site_baseurl}}/_notebooks/JS_Scripts/2024-02-12-RandomNumbers.js"></script>  not loading :(-->
 </head>
 
 <body>
@@ -37,7 +36,7 @@ permalink: /gamescreen
     <div class="black-box">
         <!-- Ex: You are currently at point 1 on the map. You can move to the points 2, 3. Please input the number of the point you would like to move to. -->
         <!-- "1", "2, 3" needs to change + "move" should be able to change to "move or attack" + add text saying there's an enemy 1 step away from you -->
-        <h2 id="boxtext">You are currently at point <span id="currentposition"></span> on the map. <span id="enemyalert"></span>You can <span id="actions"></span> to the points <span id="possibleactionpositions"></span>. Please input the number of the point you would like to act on in the respective action box.</h2>
+        <h2 id="boxtext">You are currently at point <span id="currentposition"></span> on the map. <span id="enemyalert"></span>You can <span id="actions"></span> the points <span id="possibleactionpositions"></span>. Please input the number of the point you would like to act on in the respective action box.</h2>
         <input type="number" min="1" max="9" class="white-input" placeholder="Type here..." id="playerinputmove">
         <button onclick="movement()">Move</button><br>
         <input type="number" min="1" max="9" class="white-input" placeholder="Type here..." id="playerinputattack">
@@ -46,6 +45,11 @@ permalink: /gamescreen
 </body>
 
 <script>
+    // Define function to calculate damage
+    function calculateDamage(health) {
+      //
+    }
+    
     // Define variable for initial position and update it in text
     var position = 1
     document.getElementById("currentposition").textContent = position;
@@ -77,55 +81,87 @@ permalink: /gamescreen
     }
     document.getElementById("possibleactionpositions").textContent = possibleActionPositions[position];
 
-    // Check for enemy position and alert if needed
-    var enemyposition = 9
-    function checkPosition(number, arr) { // not working sadge
-        for (var i = 0; i < arr.length; i++) {
-            if (arr[i] === number) {
-                console.log(arr)
-                document.getElementById("enemyalert").textContent = "The enemy is one step away from you!";
-                document.getElementById("actions").textContent = "move or attack";
-                return;
-            }
-            else {
-                document.getElementById("actions").textContent = "move";
-                return;
-            }
+    // Define function to check if a number is in one of the possible actions
+    var enemyposition = 9;
+    var enemyspot = possibleActionPositions[enemyposition]
+    function checkPosition(number, arr) {
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == number) {
+          document.getElementById("enemyalert").textContent = "The enemy is one step away from you! ";
+          document.getElementById("actions").textContent = "move to or attack";
+          return;
         }
+        else {
+          document.getElementById("enemyalert").textContent = "";
+          document.getElementById("actions").textContent = "move to";
+        }
+      }
     };
-    checkPosition(enemyposition, possibleActionPositions[position])
+    checkPosition(position, enemyspot);
 
-    // Define function for AI movement
+    // Function to pick a random number from 1 to max, and this is how to decide what the enemy is going to do and where
+    function enemychoice(max) {
+      var randomnumber = Math.random();
+      var scalednumber = randomnumber * max;
+      var endnumber = Math.floor(scalednumber) + 1;
+      return endnumber;
+    };
 
+    // Function to pick a random number from an inputted array
+    function enemychoice2(array) {
+      const randomIndex = Math.floor(Math.random() * array.length);
+      var moveposition = array[randomIndex];
+      return moveposition;
+    };
+
+    // Define function for enemy movement
+    function enemymove() {
+      var moveposition = enemychoice2(enemyspot);
+      while (moveposition === position) {
+        enemychoice2(possiblemoveposition)
+      }
+      enemyposition = moveposition;
+      enemyspot = possibleActionPositions[enemyposition]
+      console.log(enemyposition);
+    };
+        
     // Define function for AI attack
+    function enemyattack() {
+      var attackposition = enemychoice2(enemyspot);
+      if (attackposition = position) {
+        // code for when player gets hit
+      }
+    };
 
     // Define function for player movement
     function movement() {
-        // Set inputValue to the number entered
-        inputmovement = document.getElementById("playerinputmove");
-        inputValue = inputmovement.value
-        // Set number entered as new postion and update text for current position, the possible places to act on, and map
-        var position = inputValue
-        document.getElementById("currentposition").textContent = position;
-        document.getElementById("possibleactionpositions").textContent = possibleActionPositions[position];
-        var map = document.getElementById("map")
-        map.src = mapImages[position]
-        // Check positions
-        checkPosition(enemyposition, possibleActionPositions[position])
-    }
-
-   
- // Define function for player attack
-    function attack() {
-        // Get the input value
-        const locationInput = document.getElementById("playerinputattack");
-        const location = parseInt(locationInput.value);
-
-        // Check if the player attacks where the enemy is present
-        if (location === enemyposition) {
-            console.log(`Player attacks location ${location} and hits! Dealing 50 damage.`);
-        } else {
-            console.log(`Player attacks location ${location} but there's no enemy. The attack misses.`);
+      // Set inputValue to the number entered
+      inputmovement = document.getElementById("playerinputmove");
+      inputValue = inputmovement.value;
+      possiblemoves = possibleActionPositions[position];
+      for (var i = 0; i < possiblemoves.length; i++) {
+        if (possiblemoves[i] == inputValue) {
+          // Set number entered as new postion and update text for current position, the possible places to act on, and map
+          position = inputValue
+          document.getElementById("currentposition").textContent = position;
+          document.getElementById("possibleactionpositions").textContent = possibleActionPositions[position];
+          var map = document.getElementById("map")
+          map.src = mapImages[position]
+          // Enemy act
+          var choice = enemychoice(2)
+          if (choice == 1) {
+            enemymove()
+          }
+          else if (choice == 2) {
+            enemyattack()
+          }
+          // Check positions
+          checkPosition(position, enemyspot)
+          return;
         }
+      }
+      alert("Invalid number!")
     }
+
+    // Define function for player attack
 </script>

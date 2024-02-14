@@ -26,7 +26,7 @@ permalink: /charactercreation
             flex: 1;
             margin-right: 20px;
         }
-        table {
+        #table {
             display: none;
         }
     </style>
@@ -39,7 +39,7 @@ permalink: /charactercreation
     <h2 class="smalltitle">Name:</h2>
     <input type="text" name="name" id="name" required><br>
     <h2 class="smalltitle">Class:</h2>
-    <select id="class" name="class" onchange="showinfo()"> <!-- use onchange to run fetch stuff or can combine into 1 function -->
+    <select id="class" name="class" onchange="showinfo()">
         <option value="">Pick a class</option>
         <option value="knight">Knight</option>
         <option value="mage">Mage</option>
@@ -64,7 +64,7 @@ permalink: /charactercreation
         <div id="grandwizard-details" class="class-details" style="display: none;">
             <p>You've selected the Grand Wizard class! This class is omnipotent, essentially unable to be beaten. Use this class for testing.</p>
         </div>
-        <div class="class-details">
+        <div id="table" class="class-details">
             <table>
                 <thead>
                 <tr>
@@ -85,7 +85,7 @@ permalink: /charactercreation
     <br>
     <button class="buttons" onclick="submitinfo()">Submit</button>
     <img class="candle" src="https://i.postimg.cc/wj2FYHpM/candle-removebg-preview.png">
-    <script type="module">
+    <script>
         // Show info and fetch data to show it too
         function showinfo() {
             var selectedclass = document.getElementById("class").value;
@@ -99,6 +99,10 @@ permalink: /charactercreation
             var selectedinfodiv = document.getElementById(selectedclass + "-details");
             if (selectedinfodiv) {
                 selectedinfodiv.style.display = "block";
+            }
+            var table = document.getElementById("table");
+            if (table) {
+                table.style.display = "block";
             }
             // Fetch stuff
             const url = "http://127.0.0.1:8086/api/classes";
@@ -163,7 +167,7 @@ permalink: /charactercreation
                 tr.appendChild(td);
                 resultContainer.appendChild(tr);
             });
-        }
+        };
         function submitinfo() {
             const url = "http://127.0.0.1:8086/api/classes";
             // get class information from table (which should be updated with the get request)
