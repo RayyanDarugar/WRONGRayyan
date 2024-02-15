@@ -67,7 +67,7 @@ Permalink: /leaderboard/
             id.innerHTML = row.uid; 
             age.innerHTML = row.age; 
             Nick.innerHTML = row.Nick;
-            role.innerHTMl = row.role;
+            role.innerHTML = row.role;
             wins.innerHTML = row.wins;
             // this builds td's into tr
             tr.appendChild(name);
@@ -78,6 +78,20 @@ Permalink: /leaderboard/
             tr.appendChild(wins)
             // append the row to table
             resultContainer.appendChild(tr);
+
+            // Store users in an array
+            const users = [];
+
+            for (const row of data) {
+                // Create a user object
+                const user = {
+                    name: row.name,
+                    id: row.uid,
+                    age: row.age,
+                    Nick: row.Nick,
+                    role: row.role,
+                    wins: row.wins,
+            };
           }
       })
   })
