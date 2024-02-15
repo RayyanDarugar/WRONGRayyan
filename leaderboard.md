@@ -24,6 +24,10 @@ Permalink: /leaderboard/
     <!-- javascript generated data -->
   </tbody>
 </table>
+<h3>Return to Menu</h3>
+<form action="{{site.baseurl}}/main_menu/">
+  <button type="submit">Menu</button>
+  </form>
 
 <script type="module">
   // uri variable and options object are obtained from config.js
@@ -67,7 +71,7 @@ Permalink: /leaderboard/
             id.innerHTML = row.uid; 
             age.innerHTML = row.age; 
             Nick.innerHTML = row.Nick;
-            role.innerHTMl = row.role;
+            role.innerHTML = row.role;
             wins.innerHTML = row.wins;
             // this builds td's into tr
             tr.appendChild(name);
