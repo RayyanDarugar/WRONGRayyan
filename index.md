@@ -36,7 +36,7 @@ search_exclude:
     </button>
   </a>
 </div>
-<a href="{{site.baseurl}}/main_menu/" target="_blank" class="button">
+<a href="{{site.baseurl}}/login" target="_blank" class="button">
     <button>
       TBFT Game
     </button>

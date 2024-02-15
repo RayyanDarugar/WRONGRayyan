@@ -65,11 +65,12 @@ The script defines a function when the page loads. This function is triggered wh
             if (!response.ok) {
                 const errorMsg = 'Login error: ' + response.status;
                 console.log(errorMsg);
+                window.location.href = "{{site.baseurl}}/Error";
                 return;
             }
             // Success!!!
             // Redirect to the database page
-            window.location.href = "{{site.baseurl}}/leaderboard/";
+            window.location.href = "{{site.baseurl}}/main_menu/";
         })
         // catch fetch errors (ie ACCESS to server blocked)
         .catch(err => {
