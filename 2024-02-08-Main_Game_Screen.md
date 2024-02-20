@@ -1,9 +1,5 @@
 ---
-layout: post
-title: Game Screen (Jason copy)
-hide: true
-description: Game screen (Jason's copy) page for JWT authentication
-permalink: /gamescreennn
+permalink: /gamescreen
 ---
 
 <html lang="en">
@@ -129,6 +125,15 @@ permalink: /gamescreennn
     function enemyattack() {
       var attackposition = enemychoice2(enemyspot);
       if (attackposition = position) {
+        const randomValue = Math.floor(Math.random() * 3) + 1;
+          if (randomValue === 1) {
+            // Redirect to the desired page
+            alert("You got hit!")
+            window.location.href = '{{site.baseurl}}/losescreen';
+          }
+          else {
+            alert("Your Enemy Missed!")
+          }
         // code for when player gets hit
       }
     };
@@ -164,4 +169,41 @@ permalink: /gamescreennn
     }
 
     // Define function for player attack
+    function attack() {
+      const randomValue = Math.floor(Math.random() * 3) + 1;
+      // Check if the random number is 1 (25% chance)
+      if (randomValue === 1) {
+          // Redirect to the desired page
+          window.location.href = '{{site.baseurl}}/winscreen';
+      }
+      else {
+        alert("You Missed!")
+      }
+      // // Set inputValue to the number entered
+      // inputmovement = document.getElementById("playerinputattack");
+      // inputValue = inputattack.value;
+      // possiblemoves = possibleActionPositions[position];
+      // for (var i = 0; i < possiblemoves.length; i++) {
+      //   if (possiblemoves[i] == inputValue) {
+      //     // Set number entered as new postion and update text for current position, the possible places to act on, and map
+      //     position = inputValue
+      //     document.getElementById("currentposition").textContent = position;
+      //     document.getElementById("possibleactionpositions").textContent = possibleActionPositions[position];
+      //     var map = document.getElementById("map")
+      //     map.src = mapImages[position]
+      //     // Enemy act
+      //     var choice = enemychoice(2)
+      //     if (choice == 1) {
+      //       enemymove()
+      //     }
+      //     else if (choice == 2) {
+      //       enemyattack()
+      //     }
+      //     // Check positions
+      //     checkPosition(position, enemyspot)
+      //     return;
+      //   }
+      // }
+      // alert("Invalid number!")
+    }
 </script>
