@@ -1,9 +1,5 @@
 ---
-layout: post
-title: Character Creation Page
-hide: true
-description: Character creation page for JWT authentication
-permalink: /charactercreationnn
+permalink: /charactercreation
 ---
 <head>
     <style>
@@ -41,29 +37,15 @@ permalink: /charactercreationnn
     <h2 class="smalltitle">Class:</h2>
     <select id="class" name="class" onchange="showinfo()">
         <option value="">Pick a class</option>
-        <option value="knight">Knight</option>
-        <option value="mage">Mage</option>
-        <option value="rogue">Rogue</option>
-        <option value="shieldbearer">Shield Bearer</option>
-        <option value="grandwizard">Grand Wizard</option>
+        <option value="Knight">Knight</option>
+        <option value="Mage">Mage</option>
+        <option value="Rogue">Rogue</option>
+        <option value="Shield Bearer">Shield Bearer</option>
+        <option value="Grand Wizard">Grand Wizard</option>
     </select>
     <!-- Display data and image -->
     <div id="classInfo">
-        <div id="knight-details" class="class-details" style="display: none;">
-            <p>You've selected the Knight class! Strong, loyal, and determined, this class features a balance between offense and defense.</p>
-        </div>
-        <div id="mage-details" class="class-details" style="display: none;">
-            <p>You've selected the Mage class! Intelligent and calm, this class features the ability to attack any space on the map at the cost of a lower health.</p>
-        </div>
-        <div id="rogue-details" class="class-details" style="display: none;">
-            <p>You've selected the Rogue class! Cunning and quick, this class features the ability to move multiple spaces at the cost of a lower health.</p>
-        </div>
-        <div id="shieldbearer-details" class="class-details" style="display: none;">
-            <p>You've selected the Shield Bearer class! Sturdy and unwavering, this class features extra health.</p>
-        </div>
-        <div id="grandwizard-details" class="class-details" style="display: none;">
-            <p>You've selected the Grand Wizard class! This class is omnipotent, essentially unable to be beaten. Use this class for testing.</p>
-        </div>
+        <h3 id="class-description" class="class-details"></h3>
         <div id="table" class="class-details">
             <table>
                 <thead>
@@ -86,26 +68,33 @@ permalink: /charactercreationnn
     <button class="buttons" onclick="submitinfo()">Submit</button>
     <img class="candle" src="https://i.postimg.cc/wj2FYHpM/candle-removebg-preview.png">
     <script>
+        const class_descriptions = {
+            Knight: "You've selected the Knight class! Strong, loyal, and determined, this class features a balance between offense and defense.",
+            Mage: "You've selected the Mage class! Intelligent and calm, this class features the ability to attack any space on the map at the cost of a lower health.",
+            Rogue: "You've selected the Rogue class! Cunning and quick, this class features the ability to move multiple spaces at the cost of a lower health.",
+            "Shield Bearer": "You've selected the Shield Bearer class! Sturdy and unwavering, this class features extra health.",
+            "Grand Wizard": "You've selected the Grand Wizard class! This class is omnipotent, essentially unable to be beaten. Use this class for testing."
+        }
         // Show info and fetch data to show it too
         function showinfo() {
             var selectedclass = document.getElementById("class").value;
-            var infodiv = document.getElementById("classInfo");
+            // var infodiv = document.getElementById("classInfo");
             // Hide all info divs initially
-            var allinfodivs = document.querySelectorAll(".class-details");
-            allinfodivs.forEach(function(div) {
-                div.style.display = "none";
-            });
-            // Show the selected info div
-            var selectedinfodiv = document.getElementById(selectedclass + "-details");
-            if (selectedinfodiv) {
-                selectedinfodiv.style.display = "block";
-            }
+            // var allinfodivs = document.querySelectorAll(".class-details");
+            // allinfodivs.forEach(function(div) {
+            //     div.style.display = "none";
+            // });
+            // // Show the selected info div
+            // var selectedinfodiv = document.getElementById(selectedclass + "-details");
+            // if (selectedinfodiv) {
+            //     selectedinfodiv.style.display = "block";
+            // }
             var table = document.getElementById("table");
             if (table) {
                 table.style.display = "block";
             }
             // Fetch stuff
-            const url = "http://127.0.0.1:8086/api/classes";
+            const url = "http://127.0.0.1:8086/api/classes/";
             const options = {
                 method: 'GET', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
@@ -133,7 +122,10 @@ permalink: /charactercreationnn
                 // valid response will contain JSON data
                 response.json().then(data => {
                     console.log(data);
-                    for (const row of data) {
+                    const just_current_class = data.filter(obj => obj.classname === selectedclass);
+                    console.log(just_current_class);
+                    console.log(selectedclass);
+                    for (const row of just_current_class) {
                         // tr and td build out for each row
                         const tr = document.createElement("tr");
                         const classname = document.createElement("td");
@@ -153,10 +145,27 @@ permalink: /charactercreationnn
                         tr.appendChild(attack);
                         tr.appendChild(range);
                         tr.appendChild(movement);
-                        // append the row to table
+                        // Remove the old rows
+                        resultContainer.innerHTML = '';
+                        // Append the row to table
                         resultContainer.appendChild(tr);
+                        // if (range.innerHTML = true) {
+                        //     range.innerHTML = 1
+                        // }
+                        // else {
+                        //     range.innerHTML = 0
+                        // }
+                        // if (movement.innerHTML = true) {
+                        //     movement.innerHTML = 1
+                        // }
+                        // else {
+                        //     movement.innerHTML = 0
+                        // }
                     }
                 })
+                // Show the description
+                const classDetailContainer = document.getElementById("class-description");
+                classDetailContainer.innerHTML = class_descriptions[selectedclass];
             })
             // Catch fetch errors
             .catch(err => {
@@ -169,9 +178,9 @@ permalink: /charactercreationnn
             });
         };
         function submitinfo() {
-            const url = "http://127.0.0.1:8086/api/classes";
+            const url = "http://127.0.0.1:8086/api/currentchar/";
             // get class information from table (which should be updated with the get request)
-            var table = document.getElementById("results");
+            var table = document.getElementById("result");
             var row = table.getElementsByTagName("tr");
             var cells = row[0].getElementsByTagName("td");
             const body = {
@@ -188,7 +197,7 @@ permalink: /charactercreationnn
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                method: 'PUT', // Override the method property
+                method: 'POST', // Override the method property
                 cache: 'no-cache', // Set the cache property
                 body: JSON.stringify(body)
             };

@@ -274,3 +274,51 @@ left: 0;
 width: 100%;
 height: 100%;
 }
+
+/* JWT login page */
+$loginfont: 'Black Ops One', system-ui;
+$niceyellow: rgba(225, 255, 0, 0.81);
+$niceblue: #71bbe9;
+
+.title {
+  font-size: 50px;
+  font-weight: bold;
+  font-family: Roboto;
+  color: $niceyellow;
+}
+
+.descriptiontext {
+  font-size: 30px;
+  font-family: $loginfont;
+  color: $niceyellow;
+}
+
+.inputusername {
+  font-size: 20px;
+  font-family: $loginfont;
+  color: $niceyellow;
+}
+
+.inputpassword {
+  font-size: 20px;
+  font-family: $loginfont;
+  color: $niceyellow;
+}
+
+.signup-button{
+@extend .button;
+background-color: $niceblue;
+color: white
+}
+
+.delete-button{
+@extend .button;
+background-color: red;
+color: white
+}
+
+.update-button{
+@extend .button;
+background-color: green;
+color: white
+}
