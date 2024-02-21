@@ -29,6 +29,9 @@ Permalink: /leaderboard/
   <button type="submit">Menu</button>
   </form>
 
+<a href="http://127.0.0.1:4100/WRONG/charactercreation"><button class="startbutton" type="button">Start Game</button></a>
+
+
 <script type="module">
   // uri variable and options object are obtained from config.js
   import { uri, options } from '{{site.baseurl}}/assets/js/api/config.js';
@@ -47,6 +50,7 @@ Permalink: /leaderboard/
       if (response.status !== 200) {
           const errorMsg = 'Database response error: ' + response.status;
           console.log(errorMsg);
+          window.location.href = "{{site.baseurl}}/403_Error/";
           const tr = document.createElement("tr");
           const td = document.createElement("td");
           td.innerHTML = errorMsg;

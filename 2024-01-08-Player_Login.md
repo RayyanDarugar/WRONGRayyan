@@ -1,11 +1,5 @@
 ---
-toc: true
-comments: false
-title: JWT Login (python/flask)
-layout: post
-description: A login screen that interacts with Python and obtains a JWT  
-type: tangibles
-courses: { compsci: {week: 2}}
+title: Login
 permalink: /login
 ---
 
@@ -65,7 +59,7 @@ The script defines a function when the page loads. This function is triggered wh
             if (!response.ok) {
                 const errorMsg = 'Login error: ' + response.status;
                 console.log(errorMsg);
-                window.location.href = "{{site.baseurl}}/Error";
+                window.location.href = "{{site.baseurl}}/401_Error?message=Incorrect+Username+or+Password";
                 return;
             }
             // Success!!!
