@@ -197,7 +197,7 @@ permalink: /charactercreation
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                method: 'POST', // Override the method property
+                method: 'PUT', // Override the method property
                 cache: 'no-cache', // Set the cache property
                 body: JSON.stringify(body)
             };

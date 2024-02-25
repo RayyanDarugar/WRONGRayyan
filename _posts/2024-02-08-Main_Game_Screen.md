@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Game Screen (Jason copy)
+title: Game Screen
 hide: true
-description: Game screen (Jason's copy) page for JWT authentication
-permalink: /gamescreennn
+description: Game screen page for JWT authentication
+permalink: /gamescreen
 ---
 
 <html lang="en">
@@ -46,12 +46,82 @@ permalink: /gamescreennn
 
 <script>
     // Define function to calculate damage
-    function calculateDamage(health) {
-      //
-    }
+    async function calculateDamage() {
+      var dataHealth = 0;
+      // Fetch data to get HP
+      const url = "http://127.0.0.1:8086/api/currentchar/";
+      var options = {
+          method: 'GET', // *GET, POST, PUT, DELETE, etc.
+          mode: 'cors', // no-cors, *cors, same-origin
+          cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: 'include', // include, same-origin, omit
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      };
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(data);
+
+      var dataObject = data[0];
+      console.log(dataObject);
+
+      dataHealth = dataObject["health"];
+      console.log("EEE " + dataHealth);
+
+      var newhealth = dataHealth - 1;
+      console.log(newhealth)
+
+      dataObject["health"] = newhealth;
+      console.log(dataObject)
+
+      // Send PUT request
+      body = {
+          // name: document.getElementById("name").value,
+          classname: dataObject["classname"],
+          health: newhealth,
+          attack: dataObject["attack"],
+          range: dataObject["range"],
+          movement: dataObject["movement"]
+      };
+      var AuthOptions = {
+          mode: 'cors', // no-cors, *cors, same-origin
+          credentials: 'include', // include, same-origin, omit
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          method: 'PUT', // Override the method property
+          cache: 'no-cache', // Set the cache property
+          body: JSON.stringify(body)
+      };
+      // fetch the API
+      fetch(url, AuthOptions)
+      // response is a RESTful "promise" on any successful fetch
+      .then(response => {
+          // check for response errors and display
+          if (response.status !== 200) {
+              // window.location.href = "{{site.baseurl}}/authorizationfail"; *update with link for error
+              return;
+          }
+          // valid response will contain JSON data
+          response.json().then(data => {
+              // window.location.href='{{site.baseurl}}/gamescreen'
+              console.log("Data updated")
+          })
+      })
+      // catch fetch errors (ie ACCESS to server blocked)
+      .catch(err => {
+      console.log(err)
+      });
+      
+      // Check if health is 0
+      if (newhealth == 0) {
+        window.location.href = '{{site.baseurl}}/losescreen';
+      }
+    };
     
     // Define variable for initial position and update it in text
-    var position = 1
+    var position = 1;
     document.getElementById("currentposition").textContent = position;
 
     // Define object for the map images (MapPos1 means at point 1)
@@ -117,19 +187,19 @@ permalink: /gamescreennn
     // Define function for enemy movement
     function enemymove() {
       var moveposition = enemychoice2(enemyspot);
-      while (moveposition === position) {
-        enemychoice2(possiblemoveposition)
-      }
+      while (moveposition == position) {
+        moveposition = enemychoice2(enemyspot);
+      };
       enemyposition = moveposition;
       enemyspot = possibleActionPositions[enemyposition]
-      console.log(enemyposition);
+      return;
     };
         
     // Define function for AI attack
     function enemyattack() {
       var attackposition = enemychoice2(enemyspot);
-      if (attackposition = position) {
-        // code for when player gets hit
+      if (attackposition == position) {
+        calculateDamage();
       }
     };
 
@@ -150,12 +220,14 @@ permalink: /gamescreennn
           // Enemy act
           var choice = enemychoice(2)
           if (choice == 1) {
-            enemymove()
+            enemymove();
+            console.log("Enemy has moved to " + enemyposition)
           }
           else if (choice == 2) {
-            enemyattack()
+            enemyattack();
+            console.log("Enemy has attacked")
           }
-          // Check positions
+          // Check positions and give alert if conditions met
           checkPosition(position, enemyspot)
           return;
         }
@@ -164,4 +236,33 @@ permalink: /gamescreennn
     }
 
     // Define function for player attack
+    function attack() {
+      inputattack = document.getElementById("playerinputattack");
+      inputattackValue = inputattack.value;
+      possiblemoves = possibleActionPositions[position];
+      for (var i = 0; i < possiblemoves.length; i++) {
+        if (possiblemoves[i] == inputattackValue) {
+          // Check if hit or not
+          if (possiblemoves[i] == enemyposition) {
+            alert("You Hit!")
+            window.location.href='{{site.baseurl}}/winscreen'
+            return;
+          }
+          else {
+            alert("You Missed!")
+          }
+          // Enemy act
+          var choice = enemychoice(2)
+          if (choice == 1) {
+            enemymove();
+            console.log("Enemy has moved")
+          }
+          else if (choice == 2) {
+            enemyattack();
+            console.log("Enemy has attacked")
+          }
+        }
+      }
+      alert("Invalid number!")
+    }
 </script>
