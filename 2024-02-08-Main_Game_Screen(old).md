@@ -1,5 +1,5 @@
 ---
-permalink: /gamescreen
+permalink: /gamescreennn
 ---
 
 <html lang="en">
@@ -113,12 +113,12 @@ permalink: /gamescreen
     // Define function for enemy movement
     function enemymove() {
       var moveposition = enemychoice2(enemyspot);
-      while (moveposition === position) {
-        enemychoice2(possiblemoveposition)
-      }
+      while (moveposition == position) {
+        moveposition = enemychoice2(enemyspot);
+      };
       enemyposition = moveposition;
       enemyspot = possibleActionPositions[enemyposition]
-      console.log(enemyposition);
+      return;
     };
         
     // Define function for AI attack
@@ -155,12 +155,12 @@ permalink: /gamescreen
           // Enemy act
           var choice = enemychoice(2)
           if (choice == 1) {
-            enemymove()
+            enemymove();
           }
           else if (choice == 2) {
-            enemyattack()
+            enemyattack();
           }
-          // Check positions
+          // Check positions and give alert if conditions met
           checkPosition(position, enemyspot)
           return;
         }
