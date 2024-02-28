@@ -49,7 +49,7 @@ The script defines a function when the page loads. This function is triggered wh
 
     function signup_user(){
         // Set Authenticate endpoint
-        const url = uri + '/api/users/';
+        const url = uri + '/api/users';
 
         // Set the body of the request to include login data from the DOM
         const body = {
