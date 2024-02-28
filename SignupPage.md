@@ -1,6 +1,4 @@
 ---
-layout: default
-title: Grayson G. Blog
 permalink: /signup
 ---
 

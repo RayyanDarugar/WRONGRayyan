@@ -3,7 +3,7 @@ layout: post
 title: Character Creation Page
 hide: true
 description: Character creation page for JWT authentication
-permalink: /charactercreation
+permalink: /charactercreationnn
 ---
 <head>
     <style>

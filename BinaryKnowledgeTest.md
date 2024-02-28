@@ -1,11 +1,5 @@
 ---
-toc: true
-comments: true
-layout: post
-title: Binary Project Test HTML
-description: Creating and testing the test for the Binary Project
-type: hacks
-courses: { compsci: {week: 13} }
+permalink: /binaryknowledgetest
 ---
 
 <style>
