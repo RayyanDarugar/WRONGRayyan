@@ -113,3 +113,4 @@ Permalink: /leaderboard/
     resultContainer.appendChild(tr);
   });
 </script>
+
