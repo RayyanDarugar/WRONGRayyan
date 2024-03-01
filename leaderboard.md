@@ -60,6 +60,9 @@ Permalink: /leaderboard/
       }
       // valid response will contain JSON data
       response.json().then(data => {
+          data.sort((first, second) => {
+          return second.wins - first.wins;
+          });
           console.log(data);
           for (const row of data) {
             // tr and td build out for each row
@@ -86,7 +89,7 @@ Permalink: /leaderboard/
             tr.appendChild(wins)
             // append the row to table
             resultContainer.appendChild(tr);
-
+          }
             // Store users in an array
             const users = [];
 
