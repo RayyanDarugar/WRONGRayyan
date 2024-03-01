@@ -94,7 +94,7 @@ permalink: /charactercreation
                 table.style.display = "block";
             }
             // Fetch stuff
-            const url = "http://127.0.0.1:8086/api/classes/";
+            const url = "http://{{site.baseurl}}/api/classes/";
             const options = {
                 method: 'GET', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
@@ -178,7 +178,7 @@ permalink: /charactercreation
             });
         };
         function submitinfo() {
-            const url = "http://127.0.0.1:8086/api/currentchar/";
+            const url = "http://{{site.baseurl}}/api/currentchar/";
             // get class information from table (which should be updated with the get request)
             var table = document.getElementById("result");
             var row = table.getElementsByTagName("tr");
