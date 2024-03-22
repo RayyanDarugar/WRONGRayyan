@@ -77,8 +77,8 @@ permalink: /main_menu/
         <button class="startbutton" type="button" onclick="()">Start</button>
         <button class="leaderboardButton" type="button" onclick="()">Leaderboard</button>
         <button class="loginButton" type="button" onclick="()">Login</button>
-        <a href="http://{{site.baseurl}}/charactercreation"><button class="startbutton" type="button">Start Game</button></a>
-        <a href="http://1{{site.baseurl}}/leaderboard"><button class="leaderboardButton" type="button">Leaderboard</button></a>
-        <a href="http://{{site.baseurl}}/login"><button class="loginButton" type="button">Login</button></a>
+        <a href="{{site.baseurl}}/charactercreation"><button class="startbutton" type="button">Start Game</button></a>
+        <a href="{{site.baseurl}}/leaderboard"><button class="leaderboardButton" type="button">Leaderboard</button></a>
+        <a href="{{site.baseurl}}/login"><button class="loginButton" type="button">Login</button></a>
     </body>
 </html>
