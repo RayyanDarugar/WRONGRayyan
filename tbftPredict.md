@@ -1,51 +1,67 @@
 ---
 toc: true
 comments: true
-title: The SpaceX Incident of 2025
+title: TBFT! Predict your Successes!
 type: hacks
 courses: { compsci: {week: 28} }
-permalink: /predict/
+permalink: /tbftpredict/
 ---
 
 <html>
+    <style>
+        .bg2 {
+            color: black;
+            font-size: large;
+            width: 100;
+            height: 100vh;
+            background: url(https://media.giphy.com/media/xUOxeQaTAqYBXq5j1u/giphy.gif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-blend-mode: hard-light;
+            font-weight: bold;
+            text-align: center;
+        }
+        .results {
+            color: limegreen;
+            font-size: xx-large;
+        }
+        .badresults {
+            color: red;
+            font-size: xx-large;
+        }
+    </style>
     <head>
-        <title>Do You Survive The SpaceX Incident of 2025?</title>
+        <title>Whats your chance of winning in tbft?</title>
     </head>
     <body>
-        <div class="container">
-            <h1>Do You Survive The SpaceX Incident of 2025?</h1>
+        <div class="container" class="bg2">
+            <h1>Will you win?</h1>
             <form id="titanicForm"  >
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name"><br><br>
-                <label for="pclass">Pclass (passenger class - 1, 2, or 3):</label>
-                <input type="number" id="pclass" name="pclass"><br><br>
+                 <label for="age">Age:</label>
+                <input type="number" id="age" name="age"><br><br>
                 <label for="sex">Sex:</label>
                 <select id="sex" name="sex">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select><br><br>
-                <label for="age">Age:</label>
-                <input type="number" id="age" name="age"><br><br>
-                <label for="sibsp">SibSp (# of siblings on board or spouses):</label>
-                <input type="number" id="sibsp" name="sibsp"><br><br>
-                <label for="parch">Parch (# of parents on board):</label>
-                <input type="number" id="parch" name="parch"><br><br>
-                <label for="fare">Fare (cost of your ticket - $35 is average):</label>
-                <input type="number" id="fare" name="fare" step="0.01"><br><br>
-                <label for="embarked">Embarked (Location - Cape Cod, JPL, Australia):</label>
-                <select id="embarked" name="embarked">
-                    <option value="S">C</option>
-                    <option value="C">J</option>
-                    <option value="Q">A</option>
+                   <label for="dhand">Dominant Hand:</label>
+                <select id="dhand" name="dhand">
+                    <option value="right">Right</option>
+                    <option value="left">Left</option>
                 </select><br><br>
-                <label for="alone">Alone (Check NO if parents on sibs on board):</label>
-                <select id="alone" name="alone">
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
+                   <label for="fmove">First Move:</label>
+                <select id="fmove" name="fmove">
+                    <option value="one">1</option>
+                    <option value="two">2</option>
                 </select><br><br>
+                     <label for="fattack">First Attack:</label>
+                <input type="text" id="fattack" name="fattack"><br><br>
                 <button type="submit" class="btn btn-primary">Predict</button>
             </form>
-            <div id="result"></div>
+            <h1 id="result"></h1>
         </div>
         <script>
             // uri variable and options object are obtained from config.js
@@ -56,16 +72,13 @@ permalink: /predict/
                 const form = event.target;
                 var formData = {
                     'name': document.getElementById('name').value,
-                    'pclass': parseInt(document.getElementById('pclass').value),
-                    'sex': document.getElementById('sex').value,
                     'age': parseInt(document.getElementById('age').value),
-                    'sibsp': parseInt(document.getElementById('sibsp').value),
-                    'parch': parseInt(document.getElementById('parch').value),
-                    'fare': parseFloat(document.getElementById('fare').value),
-                    'embarked': document.getElementById('embarked').value,
-                    'alone': (document.getElementById('alone').value === 'true')
+                    'sex': document.getElementById('sex').value,
+                    'dominanthand': document.getElementById('dhand').value,
+                    'firstmove': parseInt(document.getElementById('fmove').value),
+                    'firstattack': parseInt(document.getElementById('fattack').value),
                 };
-            const url = 'http://127.0.0.1:8086/api/titanic/';
+            const url = 'http://127.0.0.1:8086/api/tbftML/predict';
                 // Change options according to Authentication requirements
             const authOptions = {
                 method: 'POST', // Override the method property
@@ -87,9 +100,9 @@ permalink: /predict/
                     // // Append the text node to the result div
                     // document.getElementById('result').appendChild(textNode);
                     // // Predict and Display Prediction result
-                    // // var probability = (data * 100).toFixed(2) + '%'
+                    var probability = (data.win * 100).toFixed(2) + '%'
                     // document.getElementById('result').innerHTML = "Here's your chance of death: " + data.death_probability;
-                    document.getElementById('result').innerHTML = 'Your Probability of Death is = '+ data.death_probability;
+                    document.getElementById('result').innerHTML = 'Your Chance of winning is = '+ probability;
                 })
                 .catch(error => {
                     console.error('Error:', error);
